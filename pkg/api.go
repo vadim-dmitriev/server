@@ -1,8 +1,10 @@
 package pkg
 
 import (
-	"fmt"
+	"log"
 	"net"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type Server interface {
@@ -20,7 +22,13 @@ type TCPServer struct {
 }
 
 func (tcps *TCPServer) SendButtonPressed(request *KeyPressedRequest) *Empty {
-	fmt.Println(request.Key)
+	log.Print(request)
+
+	bytes, err := proto.Marshal(request)
+	if err != nil {
+		panic(err)
+	}
+	tcps.conn.Write(bytes)
 
 	return &Empty{}
 }
