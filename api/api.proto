@@ -1,0 +1,6 @@
+syntax = "proto3";
+package api;
+option go_package="github.com/vadim-dmitriev/server/pkg";
+
+
+message Empty {};
