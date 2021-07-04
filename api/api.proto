@@ -4,3 +4,14 @@ option go_package="github.com/vadim-dmitriev/server/pkg";
 
 
 message Empty {};
+
+message KeyPressedRequest {
+    Key key = 1;
+}
+
+enum Key {
+    W = 0;
+    A = 1;
+    S = 2;
+    D = 3;
+}
